@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo</title>
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="../index-1.css" />
+    <link rel="stylesheet" href="../index-2.css" />
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: none;
+      }
+      #components-layout-demo-fixed .logo {
+  width: 120px;
+  height: 31px;
+  background: #333;
+  border-radius: 6px;
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+    </style>
+  </head>
+  <body>
+    <div id="components-layout-demo-fixed"></div>
+    <script>
+      function require(module) {
+        if (module === 'react-router') {
+          return window.ReactRouter;
+        }
+        return window.parent[module];
+      }
+      var mountNode = document.getElementById('components-layout-demo-fixed');
+    </script>
+    <script src="https://unpkg.com/react/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/react-router@3/umd/ReactRouter.js"></script>
+    <script>
+      function bishengPluginReactPreviewer() {
+  var React = require("react");
+
+  var ReactDOM = require("react-dom");
+
+  var _antd = require("antd");
+
+  var Header = _antd.Layout.Header,
+      Content = _antd.Layout.Content,
+      Footer = _antd.Layout.Footer;
+  return React.createElement(
+    _antd.Layout,
+    null,
+    React.createElement(
+      Header,
+      {
+        style: {
+          position: 'fixed',
+          width: '100%'
+        }
+      },
+      React.createElement("div", {
+        className: "logo"
+      }),
+      React.createElement(
+        _antd.Menu,
+        {
+          theme: "dark",
+          mode: "horizontal",
+          defaultSelectedKeys: ['2'],
+          style: {
+            lineHeight: '64px'
+          }
+        },
+        React.createElement(
+          _antd.Menu.Item,
+          {
+            key: "1"
+          },
+          "nav 1"
+        ),
+        React.createElement(
+          _antd.Menu.Item,
+          {
+            key: "2"
+          },
+          "nav 2"
+        ),
+        React.createElement(
+          _antd.Menu.Item,
+          {
+            key: "3"
+          },
+          "nav 3"
+        )
+      )
+    ),
+    React.createElement(
+      Content,
+      {
+        style: {
+          padding: '0 50px',
+          marginTop: 64
+        }
+      },
+      React.createElement(
+        _antd.Breadcrumb,
+        {
+          style: {
+            margin: '12px 0'
+          }
+        },
+        React.createElement(
+          _antd.Breadcrumb.Item,
+          null,
+          "Home"
+        ),
+        React.createElement(
+          _antd.Breadcrumb.Item,
+          null,
+          "List"
+        ),
+        React.createElement(
+          _antd.Breadcrumb.Item,
+          null,
+          "App"
+        )
+      ),
+      React.createElement(
+        "div",
+        {
+          style: {
+            background: '#fff',
+            padding: 24,
+            minHeight: 380
+          }
+        },
+        "Content"
+      )
+    ),
+    React.createElement(
+      Footer,
+      {
+        style: {
+          textAlign: 'center'
+        }
+      },
+      "Ant Design ©2016 Created by Ant UED"
+    )
+  );
+}
+    </script>
+    <script>
+      var ReactDOM = require('react-dom');
+      ReactDOM.render(bishengPluginReactPreviewer(), mountNode);
+    </script>
+  </body>
+</html>

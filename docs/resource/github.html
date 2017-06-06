@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An enterprise-class UI design language and React-based implementation">
+    <meta name="description" content="A set of high-quality React components">
+    <meta name="description" content="One of best React UI library for enterprise background">
+    <title>Ant Design - A UI Design Language</title>
+    <script>
+    (function() {
+      function isLocalStorageNameSupported() {
+        var testKey = 'test';
+        var storage = window.localStorage;
+        try {
+          storage.setItem(testKey, '1');
+          storage.removeItem(testKey);
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }
+      // 优先级提高到所有静态资源的前面，语言不对，加载其他静态资源没意义
+      var pathname = location.pathname;
+
+      function isZhCN(pathname) {
+        return /-cn\/?$/.test(pathname);
+      }
+      function getLocalizedPathname(path, zhCN) {
+        var pathname = path.startsWith('/') ? path : '/' + path;
+        if (!zhCN) { // to enUS
+          return /\/?index-cn/.test(pathname) ? '/' : pathname.replace('-cn', '');
+        } else if (pathname === '/') {
+          return '/index-cn';
+        } else if (pathname.endsWith('/')) {
+          return pathname.replace(/\/$/, '-cn/');
+        }
+        return pathname + '-cn';
+      }
+
+      // 兼容旧的 URL， `?locale=...`
+      var queryString = location.search;
+      if (queryString) {
+        var isZhCNConfig = queryString.indexOf('zh-CN') > -1;
+        if (isZhCNConfig && !isZhCN(pathname)) {
+          location.pathname = getLocalizedPathname(pathname, isZhCNConfig)
+        }
+      }
+
+      // 首页无视链接里面的语言设置 https://github.com/ant-design/ant-design/issues/4552
+      if (isLocalStorageNameSupported() && (pathname === '/' || pathname === '/index-cn')) {
+        var lang = (window.localStorage && localStorage.getItem('locale')) || (navigator.language.toLowerCase() === 'zh-cn' ? 'zh-CN' : 'en-US');
+        // safari is 'zh-cn', while other browser is 'zh-CN';
+        if ((lang === 'zh-CN') !== isZhCN(pathname)) {
+          location.pathname = getLocalizedPathname(pathname, lang === 'zh-CN');
+        }
+      }
+      document.documentElement.className += isZhCN(pathname) ? 'zh-cn' : 'en-us';
+    })()
+    </script>
+    <link rel="icon" href="https://t.alipayobjects.com/images/T1QUBfXo4fXXXXXXXX.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.cnpmjs.org/css?family=Lato:400,700|Raleway"/>
+    <link rel="stylesheet" type="text/css" href="/index-1.css"/>
+    <link rel="stylesheet" type="text/css" href="/index-2.css"/>
+    <style id="nprogress-style">
+      #nprogress { display: none }
+    </style>
+    <!--[if lte IE 10]>
+      <script
+        src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,media-match/2.0.2/media.match.min.js"></script>
+    <![endif]-->
+    <script>
+    if (!window.Intl) {
+      document.writeln('<script src="https://as.alipayobjects.com/g/component/intl/1.0.1/??Intl.js,locale-data/jsonp/en.js,locale-data/jsonp/zh.js">' + '<' + '/script>');
+    }
+    if (!window.Promise) {
+      document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+    }
+    // Enable Google Analytics
+    if (!location.port) {
+      /* eslint-disable */
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-72788897-1', 'auto');
+      ga('send', 'pageview');
+      /* eslint-enable */
+    }
+    </script>
+    <!-- Hotjar Tracking Code for ant.design -->
+    <script>
+    (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:473408,hjsv:5};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+  </head>
+  <body>
+    <div id="react-content">
+      <div class="page-wrapper" data-reactroot="" data-reactid="1" data-react-checksum="-1443499708"><header id="header" class="clearfix" data-reactid="2"><div class="ant-row" data-reactid="3"><div class="ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-4" data-reactid="4"><a id="logo" href="/" data-reactid="5"><img alt="logo" src="https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg" data-reactid="6"/><span data-reactid="7">Ant Design</span></a></div><div class="ant-col-xs-0 ant-col-sm-0 ant-col-md-19 ant-col-lg-20" data-reactid="8"><div id="search-box" data-reactid="9"><div class="ant-select ant-select-combobox ant-select-enabled" data-reactid="10"><div class="ant-select-selection
+            ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" data-reactid="11"><div class="ant-select-selection__rendered" data-reactid="12"><div style="display:block;user-select:none;-webkit-user-select:none;" unselectable="unselectable" class="ant-select-selection__placeholder" data-reactid="13">Search Components...</div><ul data-reactid="14"><li class="ant-select-search ant-select-search--inline" data-reactid="15"><div class="ant-select-search__field__wrap" data-reactid="16"><input value="" class="ant-select-search__field" data-reactid="17"/><span class="ant-select-search__field__mirror" data-reactid="18"><!-- react-text: 19 --><!-- /react-text --><!-- react-text: 20 --> <!-- /react-text --></span></div></li></ul></div><span class="ant-select-arrow" style="user-select:none;-webkit-user-select:none;" unselectable="unselectable" data-reactid="21"><b data-reactid="22"></b></span></div></div></div><button type="button" class="ant-btn ant-btn-ghost ant-btn-sm lang" data-reactid="23"><span data-reactid="24">中文</span></button><div class="ant-select-sm version ant-select ant-select-enabled" data-reactid="25"><div class="ant-select-selection
+            ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" data-reactid="26"><div class="ant-select-selection__rendered" data-reactid="27"><div class="ant-select-selection-selected-value" title="2.9.1" style="display:block;opacity:1;" data-reactid="28">2.9.1</div></div><span class="ant-select-arrow" style="user-select:none;-webkit-user-select:none;" unselectable="unselectable" data-reactid="29"><b data-reactid="30"></b></span></div></div><ul class="ant-menu ant-menu-horizontal  ant-menu-light ant-menu-root" role="menu" aria-activedescendant="" id="nav" tabindex="0" data-reactid="31"><li class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="32"><a href="/" data-reactid="33"><span data-reactid="34">Home</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="35"><a href="/docs/spec/introduce" data-reactid="36"><span data-reactid="37">Guidlines</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="38"><a href="/docs/react/introduce" data-reactid="39"><span data-reactid="40">Components</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="41"><a href="/docs/pattern/navigation" data-reactid="42"><span data-reactid="43">Patterns</span></a></li><li class="ant-menu-item-selected ant-menu-item" role="menuitem" aria-selected="true" data-reactid="44"><a href="/docs/resource/download" data-reactid="45"><span data-reactid="46">Resources</span></a></li></ul></div></div></header><div class="main-wrapper" data-reactid="47"><div class="ant-row" data-reactid="48"><div class="ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-4" data-reactid="49"><ul class="ant-menu ant-menu-inline aside-container ant-menu-light ant-menu-root" role="menu" aria-activedescendant="" tabindex="0" data-reactid="50"><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="51"><a href="/docs/resource/download" data-reactid="52">Download</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="53"><a href="/docs/resource/reference" data-reactid="54">Reference</a></li><li style="padding-left:24px;" class="ant-menu-item-selected ant-menu-item" role="menuitem" aria-selected="true" data-reactid="55"><a href="//github.com/ant-design/ant-design" target="_blank" rel="noopener noreferrer" class="menu-item-link-outside" data-reactid="56"><!-- react-text: 57 -->GitHub<!-- /react-text --><!-- react-text: 58 --> <!-- /react-text --><i class="anticon anticon-export" data-reactid="59"></i></a></li></ul></div><div class="main-container ant-col-xs-24 ant-col-sm-24 ant-col-md-18 ant-col-lg-20" data-reactid="60"><article class="markdown" data-reactid="61"><h1 data-reactid="62"><!-- react-text: 63 -->GitHub<!-- /react-text --><a class="edit-button" href="https://github.com/ant-design/ant-design/edit/master/docs/resource/github.md" data-reactid="64"><i class="anticon anticon-edit" data-reactid="65"></i></a></h1><section class="markdown" data-reactid="66"></section></article></div></div><div class="ant-row" data-reactid="67"><div class="ant-col-xs-24 ant-col-sm-24 ant-col-md-18 ant-col-md-offset-6 ant-col-lg-20 ant-col-lg-offset-4" data-reactid="68"><section class="prev-next-nav" data-reactid="69"><a class="prev-page" href="/docs/resource/reference" data-reactid="70">Reference</a></section></div></div></div><footer id="footer" data-reactid="71"><ul data-reactid="72"><li data-reactid="73"><h2 data-reactid="74"><i class="anticon anticon-github" data-reactid="75"></i><!-- react-text: 76 --> GitHub<!-- /react-text --></h2><div data-reactid="77"><a target="_blank " href="https://github.com/ant-design/ant-design" data-reactid="78"><span data-reactid="79">Repository</span></a></div><div data-reactid="80"><a target="_blank " href="https://ant.design/docs/react/customize-theme" data-reactid="81"><span data-reactid="82">Customize Theme</span></a></div><div data-reactid="83"><a target="_blank " href="https://github.com/websemantics/awesome-ant-design" data-reactid="84"><span data-reactid="85">Awesome Ant Design</span></a></div></li><li data-reactid="86"><h2 data-reactid="87"><i class="anticon anticon-link" data-reactid="88"></i><!-- react-text: 89 --> <!-- /react-text --><span data-reactid="90">Links</span></h2><div data-reactid="91"><a href="https://design.alipay.com/" data-reactid="92"><span data-reactid="93">Ant Financial Design Platform</span></a></div><div data-reactid="94"><a href="http://mobile.ant.design" data-reactid="95">Ant Design Mobile</a><span data-reactid="96"> - </span><span data-reactid="97">Mobile UI</span></div><div data-reactid="98"><a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva" data-reactid="99">dva</a><!-- react-text: 100 --> - <!-- /react-text --><span data-reactid="101">Framework</span></div><div data-reactid="102"><a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva-cli" data-reactid="103">dva-cli</a><!-- react-text: 104 --> -<!-- /react-text --><span data-reactid="105">Developer Tools</span></div><div data-reactid="106"><a target="_blank" rel="noopener noreferrer" href="https://eggjs.org/" data-reactid="107">Egg</a><span data-reactid="108"> - </span><span data-reactid="109">Enterprise Node Framework</span></div><div data-reactid="110"><a target="_blank" rel="noopener noreferrer" href="https://antv.alipay.com/" data-reactid="111">AntV</a><span data-reactid="112"> - </span><span data-reactid="113">Data Visualization</span></div><div data-reactid="114"><a target="_blank" rel="noopener noreferrer" href="http://motion.ant.design" data-reactid="115">Ant Motion</a><span data-reactid="116"> - </span><span data-reactid="117">Motion Soluction</span></div><div data-reactid="118"><a target="_blank" rel="noopener noreferrer" href="http://library.ant.design/" data-reactid="119">AntD Library</a><span data-reactid="120"> - </span><span data-reactid="121">Axure library</span></div><div data-reactid="122"><a target="_blank" rel="noopener noreferrer" href="http://ux.ant.design" data-reactid="123">Ant UX</a><span data-reactid="124"> - </span><span data-reactid="125">Sitemap Template</span></div></li><li data-reactid="126"><h2 data-reactid="127"><i class="anticon anticon-customer-service" data-reactid="128"></i><!-- react-text: 129 --> <!-- /react-text --><span data-reactid="130">Community</span></h2><div data-reactid="131"><a href="/changelog" data-reactid="132"><span data-reactid="133">Change Log</span></a></div><div data-reactid="134"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ant-design/ant-design/wiki/FAQ" data-reactid="135"><span data-reactid="136">FAQ</span></a></div><div data-reactid="137"><a target="_blank" rel="noopener noreferrer" href="https://gitter.im/ant-design/ant-design" data-reactid="138"><span data-reactid="139">Chat Room (中文)</span></a></div><div data-reactid="140"><a target="_blank" rel="noopener noreferrer" href="https://gitter.im/ant-design/ant-design-english" data-reactid="141"><span data-reactid="142">Chat Room (English)</span></a></div><div data-reactid="143"><a target="_blank" rel="noopener noreferrer" href="http://new-issue.ant.design/" data-reactid="144"><span data-reactid="145">Bug Report</span></a></div><div data-reactid="146"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ant-design/ant-design/issues" data-reactid="147"><span data-reactid="148">Issues</span></a></div><div data-reactid="149"><a target="_blank" rel="noopener noreferrer" href="http://stackoverflow.com/questions/tagged/antd" data-reactid="150"><span data-reactid="151">StackOverflow</span></a></div><div data-reactid="152"><a target="_blank" rel="noopener noreferrer" href="https://segmentfault.com/t/antd" data-reactid="153"><span data-reactid="154">SegmentFault</span></a></div></li><li data-reactid="155"><h2 data-reactid="156"><!-- react-text: 157 -->Copyright © <!-- /react-text --><!-- react-text: 158 -->2017<!-- /react-text --></h2><div data-reactid="159"><span data-reactid="160">Created by AIUX</span></div><div data-reactid="161"><!-- react-text: 162 -->Built with <!-- /react-text --><a target="_blank" rel="noopener noreferrer" href="https://github.com/benjycui/bisheng" data-reactid="163">BiSheng</a></div></li></ul></footer></div>
+    </div>
+    <script src="/common.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>

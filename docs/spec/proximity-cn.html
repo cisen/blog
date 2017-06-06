@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An enterprise-class UI design language and React-based implementation">
+    <meta name="description" content="A set of high-quality React components">
+    <meta name="description" content="One of best React UI library for enterprise background">
+    <title>Ant Design - A UI Design Language</title>
+    <script>
+    (function() {
+      function isLocalStorageNameSupported() {
+        var testKey = 'test';
+        var storage = window.localStorage;
+        try {
+          storage.setItem(testKey, '1');
+          storage.removeItem(testKey);
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }
+      // 优先级提高到所有静态资源的前面，语言不对，加载其他静态资源没意义
+      var pathname = location.pathname;
+
+      function isZhCN(pathname) {
+        return /-cn\/?$/.test(pathname);
+      }
+      function getLocalizedPathname(path, zhCN) {
+        var pathname = path.startsWith('/') ? path : '/' + path;
+        if (!zhCN) { // to enUS
+          return /\/?index-cn/.test(pathname) ? '/' : pathname.replace('-cn', '');
+        } else if (pathname === '/') {
+          return '/index-cn';
+        } else if (pathname.endsWith('/')) {
+          return pathname.replace(/\/$/, '-cn/');
+        }
+        return pathname + '-cn';
+      }
+
+      // 兼容旧的 URL， `?locale=...`
+      var queryString = location.search;
+      if (queryString) {
+        var isZhCNConfig = queryString.indexOf('zh-CN') > -1;
+        if (isZhCNConfig && !isZhCN(pathname)) {
+          location.pathname = getLocalizedPathname(pathname, isZhCNConfig)
+        }
+      }
+
+      // 首页无视链接里面的语言设置 https://github.com/ant-design/ant-design/issues/4552
+      if (isLocalStorageNameSupported() && (pathname === '/' || pathname === '/index-cn')) {
+        var lang = (window.localStorage && localStorage.getItem('locale')) || (navigator.language.toLowerCase() === 'zh-cn' ? 'zh-CN' : 'en-US');
+        // safari is 'zh-cn', while other browser is 'zh-CN';
+        if ((lang === 'zh-CN') !== isZhCN(pathname)) {
+          location.pathname = getLocalizedPathname(pathname, lang === 'zh-CN');
+        }
+      }
+      document.documentElement.className += isZhCN(pathname) ? 'zh-cn' : 'en-us';
+    })()
+    </script>
+    <link rel="icon" href="https://t.alipayobjects.com/images/T1QUBfXo4fXXXXXXXX.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.cnpmjs.org/css?family=Lato:400,700|Raleway"/>
+    <link rel="stylesheet" type="text/css" href="/index-1.css"/>
+    <link rel="stylesheet" type="text/css" href="/index-2.css"/>
+    <style id="nprogress-style">
+      #nprogress { display: none }
+    </style>
+    <!--[if lte IE 10]>
+      <script
+        src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,media-match/2.0.2/media.match.min.js"></script>
+    <![endif]-->
+    <script>
+    if (!window.Intl) {
+      document.writeln('<script src="https://as.alipayobjects.com/g/component/intl/1.0.1/??Intl.js,locale-data/jsonp/en.js,locale-data/jsonp/zh.js">' + '<' + '/script>');
+    }
+    if (!window.Promise) {
+      document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+    }
+    // Enable Google Analytics
+    if (!location.port) {
+      /* eslint-disable */
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-72788897-1', 'auto');
+      ga('send', 'pageview');
+      /* eslint-enable */
+    }
+    </script>
+    <!-- Hotjar Tracking Code for ant.design -->
+    <script>
+    (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:473408,hjsv:5};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+  </head>
+  <body>
+    <div id="react-content">
+      <div class="page-wrapper" data-reactroot="" data-reactid="1" data-react-checksum="-377489571"><header id="header" class="clearfix" data-reactid="2"><div class="ant-row" data-reactid="3"><div class="ant-col-xs-24 ant-col-sm-24 ant-col-md-5 ant-col-lg-4" data-reactid="4"><a id="logo" href="/index-cn" data-reactid="5"><img alt="logo" src="https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg" data-reactid="6"/><span data-reactid="7">Ant Design</span></a></div><div class="ant-col-xs-0 ant-col-sm-0 ant-col-md-19 ant-col-lg-20" data-reactid="8"><div id="search-box" data-reactid="9"><div class="ant-select ant-select-combobox ant-select-enabled" data-reactid="10"><div class="ant-select-selection
+            ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" data-reactid="11"><div class="ant-select-selection__rendered" data-reactid="12"><div style="display:block;user-select:none;-webkit-user-select:none;" unselectable="unselectable" class="ant-select-selection__placeholder" data-reactid="13">搜索组件...</div><ul data-reactid="14"><li class="ant-select-search ant-select-search--inline" data-reactid="15"><div class="ant-select-search__field__wrap" data-reactid="16"><input value="" class="ant-select-search__field" data-reactid="17"/><span class="ant-select-search__field__mirror" data-reactid="18"><!-- react-text: 19 --><!-- /react-text --><!-- react-text: 20 --> <!-- /react-text --></span></div></li></ul></div><span class="ant-select-arrow" style="user-select:none;-webkit-user-select:none;" unselectable="unselectable" data-reactid="21"><b data-reactid="22"></b></span></div></div></div><button type="button" class="ant-btn ant-btn-ghost ant-btn-sm lang" data-reactid="23"><span data-reactid="24">EN</span></button><div class="ant-select-sm version ant-select ant-select-enabled" data-reactid="25"><div class="ant-select-selection
+            ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" data-reactid="26"><div class="ant-select-selection__rendered" data-reactid="27"><div class="ant-select-selection-selected-value" title="2.9.1" style="display:block;opacity:1;" data-reactid="28">2.9.1</div></div><span class="ant-select-arrow" style="user-select:none;-webkit-user-select:none;" unselectable="unselectable" data-reactid="29"><b data-reactid="30"></b></span></div></div><ul class="ant-menu ant-menu-horizontal  ant-menu-light ant-menu-root" role="menu" aria-activedescendant="" id="nav" tabindex="0" data-reactid="31"><li class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="32"><a href="/index-cn" data-reactid="33"><span data-reactid="34">首页</span></a></li><li class="ant-menu-item-selected ant-menu-item" role="menuitem" aria-selected="true" data-reactid="35"><a href="/docs/spec/introduce-cn" data-reactid="36"><span data-reactid="37">指引</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="38"><a href="/docs/react/introduce-cn" data-reactid="39"><span data-reactid="40">组件</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="41"><a href="/docs/pattern/navigation-cn" data-reactid="42"><span data-reactid="43">模式</span></a></li><li class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="44"><a href="/docs/resource/download-cn" data-reactid="45"><span data-reactid="46">资源</span></a></li></ul></div></div></header><div class="main-wrapper" data-reactid="47"><div class="ant-row" data-reactid="48"><div class="ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-4" data-reactid="49"><ul class="ant-menu ant-menu-inline aside-container ant-menu-light ant-menu-root" role="menu" aria-activedescendant="" tabindex="0" data-reactid="50"><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="51"><a href="/docs/spec/introduce-cn" data-reactid="52">Ant Design</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="53"><a href="/docs/spec/feature-cn" data-reactid="54">基本理念</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="55"><a href="/docs/spec/cases-cn" data-reactid="56">实践案例</a></li><li class="ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected ant-menu-submenu" data-reactid="57"><div style="padding-left:24px;" class="ant-menu-submenu-title" aria-expanded="true" aria-owns="设计原则$Menu" aria-haspopup="true" data-reactid="58"><h4 data-reactid="59">设计原则</h4></div><ul class="ant-menu ant-menu-inline  ant-menu-sub" role="menu" aria-activedescendant="" id="设计原则$Menu" data-reactid="60"><li style="padding-left:48px;" class="ant-menu-item-selected ant-menu-item" role="menuitem" aria-selected="true" data-reactid="61"><a href="/docs/spec/proximity-cn" data-reactid="62">亲密性</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="63"><a href="/docs/spec/alignment-cn" data-reactid="64">对齐</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="65"><a href="/docs/spec/contrast-cn" data-reactid="66">对比</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="67"><a href="/docs/spec/repetition-cn" data-reactid="68">重复</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="69"><a href="/docs/spec/direct-cn" data-reactid="70">直截了当</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="71"><a href="/docs/spec/stay-cn" data-reactid="72">足不出户</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="73"><a href="/docs/spec/lightweight-cn" data-reactid="74">简化交互</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="75"><a href="/docs/spec/invitation-cn" data-reactid="76">提供邀请</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="77"><a href="/docs/spec/transition-cn" data-reactid="78">巧用过渡</a></li><li style="padding-left:48px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="79"><a href="/docs/spec/reaction-cn" data-reactid="80">即时反应</a></li></ul></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="81"><a href="/docs/spec/colors-cn" data-reactid="82">色彩</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="83"><a href="/docs/spec/icon-cn" data-reactid="84">图标</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="85"><a href="/docs/spec/font-cn" data-reactid="86">字体</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="87"><a href="/docs/spec/copywriting-cn" data-reactid="88">文案</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="89"><a href="/docs/spec/layout-cn" data-reactid="90">布局</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="91"><a href="/docs/spec/navigation-cn" data-reactid="92">导航</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="93"><a href="/docs/spec/data-entry-cn" data-reactid="94">数据录入</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="95"><a href="/docs/spec/data-display-cn" data-reactid="96">数据展示</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="97"><a href="/docs/spec/feedback-cn" data-reactid="98">反馈</a></li><li style="padding-left:24px;" class="ant-menu-item" role="menuitem" aria-selected="false" data-reactid="99"><a href="http://motion.ant.design" target="_blank" rel="noopener noreferrer" class="menu-item-link-outside" data-reactid="100"><!-- react-text: 101 -->动效<!-- /react-text --><!-- react-text: 102 --> <!-- /react-text --><i class="anticon anticon-export" data-reactid="103"></i></a></li></ul></div><div class="main-container ant-col-xs-24 ant-col-sm-24 ant-col-md-18 ant-col-lg-20" data-reactid="104"><article class="markdown" data-reactid="105"><h1 data-reactid="106"><!-- react-text: 107 -->亲密性<!-- /react-text --><a class="edit-button" href="https://github.com/ant-design/ant-design/edit/master/docs/spec/proximity.zh-CN.md" data-reactid="108"><i class="anticon anticon-edit" data-reactid="109"></i></a></h1><section class="markdown" data-reactid="110"><p data-reactid="111"><!-- react-text: 112 -->如果信息之间关联性越高，它们之间的距离就应该越接近，也越像一个视觉单元；反之，则它们的距离就应该越远，也越像多个视觉单元。亲密性的根本目的是实现组织性，让用户对页面结构和信息层次一目了然。<!-- /react-text --></p></section><section class="toc" data-reactid="113"><ul data-reactid="114"><li data-reactid="115"><a class="bisheng-toc-h2" href="#纵向间距关系" data-reactid="116"><!-- react-text: 117 -->纵向间距关系<!-- /react-text --></a></li><li data-reactid="118"><a class="bisheng-toc-h2" href="#横向间距关系" data-reactid="119"><!-- react-text: 120 -->横向间距关系<!-- /react-text --></a></li></ul></section><section class="markdown" data-reactid="121"><h2 id="纵向间距关系" data-reactid="122"><span data-reactid="123"><!-- react-text: 124 -->纵向间距关系<!-- /react-text --></span><a href="#纵向间距关系" class="anchor" data-reactid="125">#</a></h2><div class="preview-image-boxes clearfix" data-reactid="126"><div class="preview-image-box" data-reactid="127"><div class="preview-image-wrapper" data-reactid="128"><img class="preview-img" src="https://os.alipayobjects.com/rmsportal/blBCqHsUJhKxxAU.png" alt="纵向间距示例" data-reactid="129"/></div><div class="preview-image-title" data-reactid="130">纵向间距示例</div><div class="preview-image-description" data-reactid="131">在 Ant Design 中，这三种规格分别为：8px（小号间距）、16px（中号间距）、24px（大号间距）。</div><!-- react-empty: 132 --></div></div><p data-reactid="133"><!-- react-text: 134 -->通过『小号间距』、『中号间距』、『大号间距』这三种规格来划分信息层次。<!-- /react-text --></p><p data-reactid="135"><br data-reactid="136"/></p><div class="preview-image-boxes clearfix" data-reactid="137"><div class="preview-image-box" data-reactid="138"><div class="preview-image-wrapper" data-reactid="139"><img class="preview-img" src="https://os.alipayobjects.com/rmsportal/EWpTfSlQzueWlbp.png" alt="增加元素示例" data-reactid="140"/></div><div class="preview-image-title" data-reactid="141">增加元素示例</div><div class="preview-image-description" data-reactid="142">通过增加『分割线』来拉开层次。</div><!-- react-empty: 143 --></div></div><p data-reactid="144"><!-- react-text: 145 -->在这三种规格不适用的情况下，可以通过加减『基础间距』的倍数，或者增加元素来拉开信息层次。<!-- /react-text --></p><blockquote data-reactid="146"><p data-reactid="147"><!-- react-text: 148 -->注：在 Ant Design 中，<!-- /react-text --><code data-reactid="149"><!-- react-text: 150 -->y=8+8*n<!-- /react-text --></code><!-- react-text: 151 -->。其中，<!-- /react-text --><code data-reactid="152"><!-- react-text: 153 -->n&gt;=0<!-- /react-text --></code><!-- react-text: 154 -->，y 是纵向间距，8 是『基础间距』。<!-- /react-text --></p></blockquote><hr data-reactid="155"/><h2 id="横向间距关系" data-reactid="156"><span data-reactid="157"><!-- react-text: 158 -->横向间距关系<!-- /react-text --></span><a href="#横向间距关系" class="anchor" data-reactid="159">#</a></h2><div class="preview-image-boxes clearfix" data-reactid="160"><div class="preview-image-box" data-reactid="161"><div class="preview-image-wrapper" data-reactid="162"><img class="preview-img" src="https://os.alipayobjects.com/rmsportal/LdomydjSKKlFhiv.png" alt="组合排布示例" data-reactid="163"/></div><div class="preview-image-title" data-reactid="164">组合排布示例</div><div class="preview-image-description" data-reactid="165"></div><!-- react-empty: 166 --></div></div><p data-reactid="167"><!-- react-text: 168 -->为了适用不同尺寸的屏幕，在横向采用栅格布局来排布组件，从而保证布局的灵活性。<!-- /react-text --></p><p data-reactid="169"><br data-reactid="170"/></p><div class="preview-image-boxes clearfix" data-reactid="171"><div class="preview-image-box" data-reactid="172"><div class="preview-image-wrapper" data-reactid="173"><img class="preview-img" src="https://os.alipayobjects.com/rmsportal/DxzQXtIEnFcFxGY.png" alt="复选框内示例" data-reactid="174"/></div><div class="preview-image-title" data-reactid="175">复选框内示例</div><div class="preview-image-description" data-reactid="176"></div><!-- react-empty: 177 --></div></div><p data-reactid="178"><!-- react-text: 179 -->在一个组件内部，元素的横向间距也应该有所不同。<!-- /react-text --></p></section></article></div></div><div class="ant-row" data-reactid="180"><div class="ant-col-xs-24 ant-col-sm-24 ant-col-md-18 ant-col-md-offset-6 ant-col-lg-20 ant-col-lg-offset-4" data-reactid="181"><section class="prev-next-nav" data-reactid="182"><a class="prev-page" href="/docs/spec/cases-cn" data-reactid="183">实践案例</a><a class="next-page" href="/docs/spec/alignment-cn" data-reactid="184">对齐</a></section></div></div></div><footer id="footer" data-reactid="185"><ul data-reactid="186"><li data-reactid="187"><h2 data-reactid="188"><i class="anticon anticon-github" data-reactid="189"></i><!-- react-text: 190 --> GitHub<!-- /react-text --></h2><div data-reactid="191"><a target="_blank " href="https://github.com/ant-design/ant-design" data-reactid="192"><span data-reactid="193">源码仓库</span></a></div><div data-reactid="194"><a target="_blank " href="https://ant.design/docs/react/customize-theme" data-reactid="195"><span data-reactid="196">定制主题</span></a></div><div data-reactid="197"><a target="_blank " href="https://github.com/websemantics/awesome-ant-design" data-reactid="198"><span data-reactid="199">Awesome Ant Design</span></a></div></li><li data-reactid="200"><h2 data-reactid="201"><i class="anticon anticon-link" data-reactid="202"></i><!-- react-text: 203 --> <!-- /react-text --><span data-reactid="204">相关站点</span></h2><div data-reactid="205"><a href="https://design.alipay.com/" data-reactid="206"><span data-reactid="207">蚂蚁金服设计平台</span></a></div><div data-reactid="208"><a href="http://mobile.ant.design" data-reactid="209">Ant Design Mobile</a><span data-reactid="210"> - </span><span data-reactid="211">移动版</span></div><div data-reactid="212"><a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva" data-reactid="213">dva</a><!-- react-text: 214 --> - <!-- /react-text --><span data-reactid="215">应用框架</span></div><div data-reactid="216"><a target="_blank" rel="noopener noreferrer" href="https://github.com/dvajs/dva-cli" data-reactid="217">dva-cli</a><!-- react-text: 218 --> -<!-- /react-text --><span data-reactid="219">开发工具</span></div><div data-reactid="220"><a target="_blank" rel="noopener noreferrer" href="https://eggjs.org/" data-reactid="221">Egg</a><span data-reactid="222"> - </span><span data-reactid="223">企业级 Node 开发框架</span></div><div data-reactid="224"><a target="_blank" rel="noopener noreferrer" href="https://antv.alipay.com/" data-reactid="225">AntV</a><span data-reactid="226"> - </span><span data-reactid="227">数据可视化</span></div><div data-reactid="228"><a target="_blank" rel="noopener noreferrer" href="http://motion.ant.design" data-reactid="229">Ant Motion</a><span data-reactid="230"> - </span><span data-reactid="231">设计动效</span></div><div data-reactid="232"><a target="_blank" rel="noopener noreferrer" href="http://library.ant.design/" data-reactid="233">AntD Library</a><span data-reactid="234"> - </span><span data-reactid="235">Axure 部件库</span></div><div data-reactid="236"><a target="_blank" rel="noopener noreferrer" href="http://ux.ant.design" data-reactid="237">Ant UX</a><span data-reactid="238"> - </span><span data-reactid="239">页面逻辑素材</span></div></li><li data-reactid="240"><h2 data-reactid="241"><i class="anticon anticon-customer-service" data-reactid="242"></i><!-- react-text: 243 --> <!-- /react-text --><span data-reactid="244">社区</span></h2><div data-reactid="245"><a href="/changelog" data-reactid="246"><span data-reactid="247">更新记录</span></a></div><div data-reactid="248"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ant-design/ant-design/wiki/FAQ" data-reactid="249"><span data-reactid="250">常见问题</span></a></div><div data-reactid="251"><a target="_blank" rel="noopener noreferrer" href="https://gitter.im/ant-design/ant-design" data-reactid="252"><span data-reactid="253">在线讨论 (中文)</span></a></div><div data-reactid="254"><a target="_blank" rel="noopener noreferrer" href="https://gitter.im/ant-design/ant-design-english" data-reactid="255"><span data-reactid="256">在线讨论 (English)</span></a></div><div data-reactid="257"><a target="_blank" rel="noopener noreferrer" href="http://new-issue.ant.design/" data-reactid="258"><span data-reactid="259">报告 Bug</span></a></div><div data-reactid="260"><a target="_blank" rel="noopener noreferrer" href="https://github.com/ant-design/ant-design/issues" data-reactid="261"><span data-reactid="262">讨论列表</span></a></div><div data-reactid="263"><a target="_blank" rel="noopener noreferrer" href="http://stackoverflow.com/questions/tagged/antd" data-reactid="264"><span data-reactid="265">StackOverflow</span></a></div><div data-reactid="266"><a target="_blank" rel="noopener noreferrer" href="https://segmentfault.com/t/antd" data-reactid="267"><span data-reactid="268">SegmentFault</span></a></div></li><li data-reactid="269"><h2 data-reactid="270"><!-- react-text: 271 -->Copyright © <!-- /react-text --><!-- react-text: 272 -->2017<!-- /react-text --></h2><div data-reactid="273"><span data-reactid="274">蚂蚁金服体验技术部出品</span></div><div data-reactid="275"><!-- react-text: 276 -->Built with <!-- /react-text --><a target="_blank" rel="noopener noreferrer" href="https://github.com/benjycui/bisheng" data-reactid="277">BiSheng</a></div></li></ul></footer></div>
+    </div>
+    <script src="/common.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>
