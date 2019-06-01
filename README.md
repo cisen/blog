@@ -5,6 +5,6 @@
  
  # 目前方向
  1. 搞懂一个js引擎源码：jerryscript
- 2. 搞懂flutter源码
+ 2. 搞懂skia源码
  3. service mesh及其他分布式研究
  4. 学习其他分布式，然后基于pomelo编写一个更简单、高可用、更容器化的分布式前端框架
