@@ -1,7 +1,7 @@
 简介
 ========
- - 熟悉react、babel、pomelo源码
- - 自学学会用k8s
+ - 熟悉[react](https://github.com/cisen/blog/issues?q=is%3Aissue+is%3Aopen+label%3Areact)、[babel](https://github.com/cisen/blog/issues?q=is%3Aopen+is%3Aissue+label%3Ababel)、[pomelo](https://github.com/cisen/blog/issues/48)源码
+ - 自学学会用[k8s](https://github.com/cisen/blog/issues?q=is%3Aissue+is%3Aopen+label%3Ak8s)
  
  # 目前方向
  ## 前端
