@@ -5,7 +5,7 @@
  
  # 目前方向
  ## 正在研究
-- jerryscript，一个js引擎源码
+- [jerryscript](https://github.com/cisen/blog/issues)，一个js引擎源码
  ## 计划
 - skia源码
  ## 后端
