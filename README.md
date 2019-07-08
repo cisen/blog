@@ -6,10 +6,16 @@
  # 目前方向
  ## 前端
  **进行中：**
-- [jerryscript](https://github.com/cisen/blog/issues)，一个js引擎源码
-- [libuv](https://github.com/libuv/libuv)，nodejs事件循环库
+ 
+- [jerryscript](https://github.com/cisen/blog/issues)，一个js引擎源码，进度50%
+- [libuv](https://github.com/libuv/libuv)，nodejs事件循环库，进度10%
+
  **未来**
+ 
 - [skia](https://github.com/google/skia)，谷歌用于chrome，android，flutter的2D向量图形处理函数库
+
  ## 后端
+ 
+ **未来**
 - service mesh及其他分布式研究
 - 学习其他分布式，然后基于pomelo编写一个更简单、高可用、更容器化的分布式前端框架
