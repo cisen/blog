@@ -5,14 +5,17 @@
  
  # 目前方向
  ## 前端
- **进行中：**
  
+ **暂停：**
 - [jerryscript](https://github.com/cisen/blog/issues)，一个js引擎源码，进度50%
 - [libuv](https://github.com/libuv/libuv)，nodejs事件循环库，进度30%(事件循环的100%)
 
- **未来**
+ **进行中：**
  
+
+ **未来**
 - [skia](https://github.com/google/skia)，谷歌用于chrome，android，flutter的2D向量图形处理函数库
+- [Webkit/WebCore](https://github.com/WebKit/webkit/tree/master/Source/WebCore), 浏览器渲染引擎
 
  ## 后端
  
