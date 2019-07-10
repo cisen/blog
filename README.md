@@ -8,7 +8,7 @@
  **进行中：**
  
 - [jerryscript](https://github.com/cisen/blog/issues)，一个js引擎源码，进度50%
-- [libuv](https://github.com/libuv/libuv)，nodejs事件循环库，进度10%
+- [libuv](https://github.com/libuv/libuv)，nodejs事件循环库，进度30%(事件循环的100%)
 
  **未来**
  
